@@ -1,0 +1,17 @@
+.forgot{
+    border-color: white;
+    background-color: rgba(10, 0, 125, 1);
+    color: white;
+    border-radius: 20px;
+    font-size: large;
+    
+    
+}
+
+
+.forgot-page{
+    background-size: cover;
+    background-position: center;
+    height: 100hv;
+    padding: 9%;
+}

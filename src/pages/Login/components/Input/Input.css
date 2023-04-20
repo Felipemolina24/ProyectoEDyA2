@@ -17,3 +17,10 @@
     border-radius: 5px;
     
 }
+
+.input-lo{
+    border-radius: 10px;
+    border-color: rgba(10, 0, 125, 1);
+    background-color: rgba(217, 217, 217, 0.2);
+    
+}

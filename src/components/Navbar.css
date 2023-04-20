@@ -1,0 +1,13 @@
+.user {
+    font-size: small;
+    color: white;
+    text-align: center;
+}
+
+.user-info {
+    margin-left: 10px;
+}
+
+.user-info p {
+    margin: 0;
+}

@@ -1,10 +1,12 @@
 import React from "react";
+import './Label.css'
 
 const Label  = ({ text }) => {
 
     return(
-        <div>
-            <label> {text} </label>
+        <div className="label-lo">
+            <label>{text}</label>
+                    
         </div>
     )
 }

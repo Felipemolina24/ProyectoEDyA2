@@ -1,50 +1,31 @@
 
 
-
-
-.form-group{
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-
-    
+.login-page{
+    background-size: cover;
+    background-position: center;
+    height: 100hv;
+    padding: 7%;
 }
 
-.sección-principal{
-    margin: 0 auto;
-    margin-top: 15%;
-    padding: 0;
-    box-shadow: 0px 0px 5px #b11111;
-    
-   
-}
-
-.modal-content{
-    background-color: #3b4652;
-    opacity: 90;
-    padding:  0 20px;
-
-}
 
 
 button{
     width: 12%;
     margin: 5px 0 25px;
     
-}
-
-.form-group input{
-
-    border-radius: 5px;
-    height: 50px;
-    padding-left: 30px;
-    font-size: 18px;
-    border: 0;
-    
     
 }
+
+.inicio{
+    border-color: rgba(177, 0, 221, 1);
+    background-color: rgba(10, 0, 125, 1);
+    color: white;
+    border-radius: 20px;
+    font-size: large;
+    
+}
+
+
 
 .log{
     color: white;
@@ -59,23 +40,38 @@ button{
 
 
 
-
-
-
-
-.Fa-go{
+.fg{
 
     color: rgb(255, 255, 255);
+    text-align: center;
 }
 
-.label-invalido{
-    font-size: 15px;
-    color: #b11111;
-    width: fit-content;
-    height: fit-content;
-    background-color: white;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 5px;
+
+
+.email-invalid{
+    border-color: red;
+    background-color: rgba(255, 171, 171, 1);
+    text-align: center;
+    color: #8a0303;
+    
+    
+}
+
+
+
+
+.input-lo{
+    border-radius: 10px;
+    border-color: rgba(10, 0, 125, 1);
+    background-color: rgba(217, 217, 217, 0.2);
+}
+
+
+.login-img{
+    width: 700px;
+    
+}
+
+.ifgt{
     
 }

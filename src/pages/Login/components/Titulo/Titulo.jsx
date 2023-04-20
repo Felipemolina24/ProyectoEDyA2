@@ -4,7 +4,7 @@ import './Titulo.css';
 const Titulo = ({text}) =>{
     return (
         <div>
-            <h1 className="title-inicio"> {text}</h1>
+            <h3 className="title-inicio"> {text}</h3>
         </div>
     )
 }

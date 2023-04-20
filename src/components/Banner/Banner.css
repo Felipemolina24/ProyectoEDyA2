@@ -1,0 +1,43 @@
+.banner{
+    background-size: cover;
+    background-position: center;
+    height: 100hv;
+
+   
+}
+
+.banner-container{
+    text-align: center;
+    padding: 15%;
+    color: whitesmoke;
+    
+}
+
+.text-banner{
+    margin-top: 100px;
+    font-size: 50px;
+    padding: 15;
+    text-shadow: 10px 10px 10px black;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.sub-text{
+    font-size: 2em;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.banner h1{
+    margin: 0;
+    text-shadow: 1px 1px 3px; 
+    font-size: 62px;
+    font-weight: bold;
+}
+
+.banner p{
+    font-size: 30px;
+    color: white;
+    opacity: 0.7;
+    text-shadow: 1px 1px 3px;
+}

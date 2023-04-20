@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "nombre": "The Witcher 3: Wild Hunt",
+        "descripcion": "Juego de rol de acción de mundo abierto en el que juegas como un cazador de monstruos llamado Geralt de Rivia. Explora un mundo hermoso y peligroso, toma decisiones difíciles y lucha contra criaturas horripilantes para descubrir la verdad detrás de una antigua profecía.",
+        "precio": 17.99,
+        "img": "the-witcher3.png" ,
+        "quanty": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Grand Theft Auto V",
+        "descripcion": "Juego de acción y aventuras en mundo abierto en el que juegas como tres personajes diferentes en una historia llena de giros y vueltas. Roba coches, realiza atracos y explora la vibrante ciudad ficticia de Los Santos.",
+        "precio": 20,
+        "img": "Grand_Theft_Auto_V.png",
+        "quanty": 1
+    },
+    {
+        "id": 3,
+        "nombre": "The last of us PART 1",
+        "descripcion": "En una civilización devastada donde se enfrentan infectados e insensibilizados sobrevivientes, alguien contrata a Joel, el cansado protagonista, para que escabulla en secreto a Ellie, de 14 años, fuera de una zona militar de cuarentena. Sin embargo, lo que comienza como un pequeño trabajo se convierte en un viaje brutal a través del país.",
+        "precio": 40,
+        "img": "the-last-of-us.png",
+        "quanty": 1
+    }
+
+]
