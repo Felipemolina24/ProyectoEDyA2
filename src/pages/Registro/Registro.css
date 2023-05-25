@@ -1,0 +1,18 @@
+.registro{
+    border-color: rgba(177, 0, 221, 1);
+    background-color: rgba(10, 0, 125, 1);
+    color: white;
+    border-radius: 20px;
+    font-size: large;
+    
+    
+}
+
+.registro-page{
+    background-size: cover;
+    background-position: center;
+    height: 100hv;
+    padding: 7%;
+}
+
+

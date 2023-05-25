@@ -1,0 +1,26 @@
+
+
+.input-error{
+
+    border: 1px solid red;
+    color: red;
+    background: rgb(248, 99, 99);
+}
+
+.label-error{
+    color: red;
+    font-size: 15px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    
+}
+
+.input-lo{
+    border-radius: 10px;
+    border-color: rgba(10, 0, 125, 1);
+    background-color: rgba(217, 217, 217, 0.2);
+    
+}

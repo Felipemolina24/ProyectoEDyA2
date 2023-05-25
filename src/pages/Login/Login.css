@@ -1,0 +1,77 @@
+
+
+.login-page{
+    background-size: cover;
+    background-position: center;
+    height: 100hv;
+    padding: 7%;
+}
+
+
+
+button{
+    width: 12%;
+    margin: 5px 0 25px;
+    
+    
+}
+
+.inicio{
+    border-color: rgba(177, 0, 221, 1);
+    background-color: rgba(10, 0, 125, 1);
+    color: white;
+    border-radius: 20px;
+    font-size: large;
+    
+}
+
+
+
+.log{
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: aqua;
+    margin: auto;
+}
+
+
+
+.fg{
+
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+
+
+.email-invalid{
+    border-color: red;
+    background-color: rgba(255, 171, 171, 1);
+    text-align: center;
+    color: #8a0303;
+    
+    
+}
+
+
+
+
+.input-lo{
+    border-radius: 10px;
+    border-color: rgba(10, 0, 125, 1);
+    background-color: rgba(217, 217, 217, 0.2);
+}
+
+
+.login-img{
+    width: 700px;
+    
+}
+
+.ifgt{
+    
+}

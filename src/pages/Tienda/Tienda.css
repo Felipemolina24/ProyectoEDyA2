@@ -1,0 +1,42 @@
+
+.navbar-container{
+    position: sticky;
+    z-index: 3;
+    top: 0;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    height: 15vh;
+    background-color: #1b1b1b;
+}
+
+.navbar-title{
+    justify-self: start;
+    margin-left: 20px;
+    color: white;
+    margin-top: 4vh;
+    font-size: 25px;
+
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    box-shadow: 2px 2px 4px
+}
+
+.carrito{
+    font-size: 40px;
+    margin-right: 20px;
+    margin-top: 4vh;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.title-off{
+    justify-self: start;
+    margin-left: 20px;
+    color: white;
+    margin-top: 4vh;
+    
+}
+

@@ -1,0 +1,11 @@
+
+.title-inicio{
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
