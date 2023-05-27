@@ -1,61 +1,48 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Label from "./components/Label/Label";
 import Titulo from "./components/Titulo/Titulo";
-
 import './Login.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
 import { useAuth } from "../../context/AuthContext";
+import {login} from '../../actions/auth'
 
 
 const Login = () => {
 
-
-    const navigate = useNavigate()
     const auth = useAuth()
-    
-    
 
-    const [correo, setCorreo] = useState("")
-    const [password, setPassword] = useState("")
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
-    const [error, setError] = useState()
+    const estadoInicial = {email: '', password: ''}
 
-    const handleLogin = async (e) => {
+    const [formData, setFormData] = useState(estadoInicial)
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setError("")
-        if (!correo) return setError("Ingrese un correo");
-
-        try {
-            await auth.login(correo, password)
-            navigate('/home')
-
-        } catch (error) {
-            console.log(error.code)
-            if (error.code === "auth/user-not-found" || error.code === "auth/missing-password" || error.code === "auth/wrong-password") {
-                setError("El correo o la contraseña son incorrectos")
-            }
-            else if (error.code === "auth/invalid-email") {
-                setError("Ingrese un correo válido")
-            }
-        }
-
-        
+       
+        dispatch(login(formData, navigate))
     }
 
-    const handleGoogle = async (e) => {
+    const handleChange = (e) =>{
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+   /*const handleGoogle = async (e) => {
         e.preventDefault()
         await auth.loginWithGoogle()
         navigate('/home')
     }
 
-    const handleFacebook = async (e) => {
+    //const handleFacebook = async (e) => {
         e.preventDefault()
         await auth.loginWithFacebook()
         navigate('/home')
-    }
+    }*/
 
 
     return (
@@ -65,9 +52,9 @@ const Login = () => {
 
                     <div className="row">
                         <div className="col-md-6">
-                            <form>
+                            <form onSubmit={(e) => handleSubmit(e)}>
                                 <div>
-                                    <Titulo text="¡Bienvenidos a nuestra comunidad en línea!" className="ifgt"/>
+                                    <Titulo text="¡Bienvenidos a nuestra comunidad en línea!" className="ifgt" />
                                 </div>
                                 <div>
                                     <center>
@@ -81,29 +68,35 @@ const Login = () => {
 
                                 </div>
                                 <Label text="Correo" />
-                                <input className="input-lo form-control" type="email" placeholder="Correo" onChange={(e) => setCorreo(e.target.value)} />
-
+                                <input className="input-lo form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Correo"
+                                    onChange={handleChange}
+                                     />
 
                                 <br></br>
                                 <Label text="Contraseña" />
-                                <input className="input-lo form-control" type="password" placeholder="Contraseña" onChange={(e) => setPassword(e.target.value)} /><br></br>
-
-                                {error && <p className="email-invalid form-control " >{error}</p>}
+                                <input className="input-lo form-control"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Contraseña"
+                                    onChange={handleChange}
+                                     />
                                 <br></br>
 
-                                <div className="text-center">
 
+                                <br></br>
 
+                            
 
-                                </div>
-
-                                <button type="submit" className="form-control inicio" onClick={(e) => handleLogin(e)} ><i className="fas fa-sign-in-alt"></i> <strong>Ingresar</strong> </button>
+                                <button type="submit" className="form-control inicio"  ><i className="fas fa-sign-in-alt"></i> <strong>Ingresar</strong> </button>
 
                                 {/* Inicio de sesion con face y google */}
                                 <div className="fg"> Inicia sesión con Facebook o Google</div>
                                 <div className="row">
                                     <div className="col">
-                                        <button className="btn btn-outline-primary w-100 my-1" onClick={(e) => handleFacebook(e)} >
+                                        <button className="btn btn-outline-primary w-100 my-1" /*onClick={(e) => handleFacebook(e)}*/ >
                                             <div className="row align-items-center">
                                                 <div className="col-2">
                                                     <img src="facebook.png" width="32" />
@@ -116,7 +109,7 @@ const Login = () => {
                                         </button>
                                     </div>
                                     <div className="col">
-                                        <button className="btn btn-outline-danger w-100 my-1" onClick={(e) => handleGoogle(e)} >
+                                        <button className="btn btn-outline-danger w-100 my-1" /*onClick={(e) => handleGoogle(e)}*/ >
                                             <div className="row align-items-center">
                                                 <div className="col-2">
                                                     <img src="google.png" width="32" />
@@ -143,10 +136,9 @@ const Login = () => {
                             </form>
                         </div>
                         <div className="col-md-6">
-                            <img src="imagen.png" className="login-img"/>
+                            <img src="imagen.png" className="login-img" />
                         </div>
                     </div>
-
                 </div>
             </div>
         </>

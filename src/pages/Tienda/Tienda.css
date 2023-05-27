@@ -30,6 +30,7 @@
     margin-top: 4vh;
     cursor: pointer;
     text-decoration: none;
+    float: right;
 }
 
 .title-off{

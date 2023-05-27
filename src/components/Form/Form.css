@@ -1,0 +1,35 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .form-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .file-input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .form-submit-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .form-clear-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+  }
+

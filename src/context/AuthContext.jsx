@@ -4,8 +4,7 @@ import { auth } from '../firebase/firebase'
 import axios from "axios";
 
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
+    
     GoogleAuthProvider,
     signInWithPopup,
     FacebookAuthProvider,
@@ -73,14 +72,7 @@ export function AuthProvider({ children }) {
 
 
 
-    const register = async (correo, password) => {
-        const response = await createUserWithEmailAndPassword(auth, correo, password)
-        console.log(response)
-    }
-    const login = async (correo, password) => {
-        const response = await signInWithEmailAndPassword(auth, correo, password)
-        console.log(response)
-    }
+    
 
     const loginWithGoogle = async () => {
         const responseGoogle = new GoogleAuthProvider()
@@ -100,19 +92,16 @@ export function AuthProvider({ children }) {
         console.log(response)
     }
 
-    const resetPassword = (email) => sendPasswordResetEmail(auth, email)
-
+ 
 
 
     return (
         <authContext.Provider
             value={{
-                register,
-                login,
+                
                 loginWithGoogle,
                 loginWithFacebook,
                 logout,
-                resetPassword,
                 user,
                 data,
                 car,

@@ -1,0 +1,61 @@
+/* Estilo del spinner de carga */
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Estilo de los contenedores de los posts */
+  .container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  /* Estilo de los posts */
+  .post {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    transition: transform .2s;
+    cursor: pointer;
+  }
+  
+  .post:hover {
+    transform: translateY(-5px);
+  }
+  
+  .post-img {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .post-content {
+    padding: 10px;
+  }
+  
+  .post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .post-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .post-tags {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .post-author {
+    font-size: 12px;
+    color: #888;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }

@@ -13,24 +13,7 @@ const Forgot = () =>{
 
     const handleForgotPassword = async (e) =>{
         e.preventDefault()
-        if(!correoForgot) return setError("Ingrese un correo")
-
-        try{
-
-        await resetPassword(correoForgot)
-            setError("Te hemos enviado un enlace a tu correo para que restablezcas tu contraseña")
-        }catch (error){
-            console.log(error.code)
-            if(error.code === "auth/invalid-email"){
-            setError("Ingrese correo un válido")
-            }
-            else{
-                if(error.code === "auth/user-not-found"){
-                    setError("Este correo aún no ha sido registrado")
-                }
-            }
-
-        }
+        
 
     }
 

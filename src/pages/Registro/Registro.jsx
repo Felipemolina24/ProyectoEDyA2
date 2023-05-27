@@ -1,52 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Titulo from "../Login/components/Titulo/Titulo";
 import Label from "../Login/components/Label/Label";
 import './Registro.css'
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import { registro } from "../../actions/auth"
 
 
 const Registro = () => {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
-    const auth = useAuth()
-    const navigate = useNavigate()
+    const estadoInicial = {email: '', password: ''}
 
-    const [error, setError] = useState()
-
-    const [correoRegistro, setCorreoRegistro] = useState("")
-    const [passwordRegistro, setPasswordRegistro] = useState("")
+    const [formData, setFormData] = useState(estadoInicial)
 
 
-    const handleRegister = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        if(!correoRegistro) return setError("Ingrese un correo")
-        setError("")
-        try {
-
-            await auth.register(correoRegistro, passwordRegistro)
-            navigate('/home')
-
-        } catch (error) {
-            console.log(error.code)
-            if (error.code === "auth/invalid-email") {
-                setError("Ingrese un correo válido")
-            } else {
-                if (error.code === "auth/weak-password") {
-                    setError("La contraseña es muy corta")
-                }
-                else if (error.code === "auth/missing-password") {
-                    setError("Digite una contraseña")
-                }
-
-
-            }
-
-        }
+       
+        dispatch(registro(formData, navigate))
     }
 
+    const handleChange = (e) =>{
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
 
     return (
         <>
@@ -55,36 +34,52 @@ const Registro = () => {
                     <div className="row justify-content-center">
                         <div className="col-md-6">
 
-                            <form>
+                            <form onSubmit={ handleSubmit} >
                                 <br></br>
                                 <center>
                                     <Titulo text="REGISTRATE" />
                                 </center>
                                 <Label text="Correo" />
-                                {error && <p className="email-invalid form-control" >{error}</p>}
-                                <input className="input-lo form-control" type="email" placeholder="Correo" onChange={(ev) => setCorreoRegistro(ev.target.value)} /><br></br>
+
+                                <input className="input-lo form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Correo"
+                                    onChange={handleChange}
+                                     /><br></br>
 
                                 <br></br>
 
 
                                 <Label text="Contraseña" />
-                                <input className="input-lo form-control" type="password" placeholder="Contraseña" onChange={(ev) => setPasswordRegistro(ev.target.value)} /><br></br>
+                                <input className="input-lo form-control"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Contraseña"
+                                    onChange={handleChange}
+                                     /><br></br>
 
 
 
                                 <br></br>
 
-                                <button type="submit" className="form-control registro" onClick={(e) => handleRegister(e)}>Registrarse</button>
+                                <button type="submit" className="form-control registro" >Registrarse</button>
                                 <br></br>
 
                                 <div className="text-center">
                                     <Link to='/'>Ya tengo una cuenta</Link>
                                 </div>
+
                             </form>
+
                         </div>
+
                     </div>
+                   
                 </div>
+
             </div>
+            
         </>
     )
 

@@ -1,25 +1,43 @@
 import './Chat.css'
-import { Link } from 'react-router-dom'
+import Nabvar from '../../components/Nabvar'
+import io from 'socket.io-client'
+import { useState, useEffect } from 'react'
+import moment from 'moment'
 
-
+const socket = io('http://localhost:4000')
 
 const Chat = () => {
+
+    const [message, setMessage] = useState("")
+    const [messages, setMessages] = useState([])
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        socket.emit('message', message)
+        const newMessage = {
+            body: message,
+            from: user.result.email,
+            timestamp: moment().toISOString()
+        }
+        setMessages([...messages, newMessage])
+        setMessage('')
+
+    }
+
+    useEffect(() => {
+        const recibirMensaje = (message) => {
+            setMessages([...messages, message])
+        }
+        socket.on('message', recibirMensaje)
+
+        return () => {
+            socket.off('message', recibirMensaje)
+        }
+    }, [messages])
     return (
         <>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
-                <div className="container-fluid">
-                    
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav ms-auto justify-content-end">
-                            <Link to='/home' className="navbar-title" aria-current="page" > <i class="fas fa-home"> </i>Home</Link>
-                            
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <Nabvar />
             <section className="body-chat">
                 <div className="seccion-titulo">
                     <h3>
@@ -30,15 +48,15 @@ const Chat = () => {
                 <div className="seccion-usuarios">
                     <div className="seccion-buscar">
                         <div className="input-buscar">
-                            <input type="search" placeholder="Buscar usuario"/>
-                                <i className="fas fa-search"></i>
+                            <input type="search" placeholder="Buscar usuario" />
+                            <i className="fas fa-search"></i>
                         </div>
                     </div>
                     <div className="seccion-lista-usuarios">
                         <div className="usuario">
                             <div className="avatar">
-                                <img src="/usuario.png" alt="img"/>
-                                    <span className="estado-usuario enlinea"></span>
+                                <img src="/usuario.png" alt="img" />
+                                <span className="estado-usuario enlinea"></span>
                             </div>
                             <div className="cuerpo">
                                 <span> Usuario</span>
@@ -50,8 +68,8 @@ const Chat = () => {
                         </div>
                         <div className="usuario">
                             <div className="avatar">
-                                <img src="/usuario.png" alt="img"/>
-                                    <span className="estado-usuario ocupado"></span>
+                                <img src="/usuario.png" alt="img" />
+                                <span className="estado-usuario ocupado"></span>
                             </div>
                             <div className="cuerpo">
                                 <span> Usuario</span>
@@ -63,8 +81,8 @@ const Chat = () => {
                         </div>
                         <div className="usuario">
                             <div className="avatar">
-                                <img src="/usuario.png" alt="img"/>
-                                    <span className="estado-usuario desconectado"></span>
+                                <img src="/usuario.png" alt="img" />
+                                <span className="estado-usuario desconectado"></span>
                             </div>
                             <div className="cuerpo">
                                 <span> Usuario </span>
@@ -79,7 +97,7 @@ const Chat = () => {
                 <div className="seccion-chat">
                     <div className="usuario-seleccionado">
                         <div className="avatar">
-                            <img src="/usuario.png" alt="img"/>
+                            <img src="/usuario.png" alt="img" />
                         </div>
                         <div className="cuerpo">
                             <span>Usuario</span>
@@ -91,70 +109,42 @@ const Chat = () => {
                                     <button type="button"><i className="fas fa-video"></i></button>
                                 </li>
                                 <li>
-                                    <button type="button"><i className="fas fa-phone-alt"></i></button>
+                                    <button type="button"><i class="fas fa-phone"></i></button>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className="panel-chat">
-                        <div className="mensaje">
-                            <div className="avatar">
-                                <img src="/usuario.png" alt="img" />
-                            </div>
-                            <div className="cuerpo">
-                                <img src="http://localhost/multimedia/png/user-foto-3.png" alt="" />
-                                <div className="texto">
-                                La comunicación es la clave del éxito. ¡Hablemos!
-                                    <span className="tiempo">
-                                        <i className="far fa-clock"></i>
-                                        Hace 5 min
-                                    </span>
+                        {messages.map((message, index) => (
+                            <div key={index} className={message.from === user.result.email ? "mensaje left" : "mensaje"}>
+                                {message.from !== user.result.email && (
+                                    <div className="avatar">
+                                        <img src={user.result.imageUrl} alt={user.result.email} />
+                                    </div>
+                                )}
+                                <div className="cuerpo">
+                                    <img src="" alt="" />
+                                    <div className="texto">
+                                        {message.body}
+                                        <span className="tiempo">
+                                            <i className="far fa-clock"></i>
+                                            {moment(message.timestamp).fromNow()}
+                                        </span>
+                                    </div>
+                                    
                                 </div>
-                                <ul className="opciones-msj">
-                                    <li>
-                                        <button type="button">
-                                            <i className="fas fa-times"></i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button">
-                                            <i className="fas fa-share-square"></i>
-                                        </button>
-                                    </li>
-                                </ul>
+                                {message.from === user.result.email && (
+                                    <div className="avatar">
+                                        <img src={user.result.imageUrl} alt={user.result.email} />
+                                    </div>
+                                )}
                             </div>
-                        </div>
+                        ))}
 
-                        <div className="mensaje left">
-                            <div className="cuerpo">
-                                <img src="http://localhost/multimedia/png/user-foto-3.png" alt="" />
-                                <div className="texto">
-                                ¡Conéctate con el mundo! ¡Inicia una conversación ahora!
-                                    <span className="tiempo">
-                                        <i className="far fa-clock"></i>
-                                        Hace 6 min
-                                    </span>
-                                </div>
-                                <ul className="opciones-msj">
-                                    <li>
-                                        <button type="button">
-                                            <i className="fas fa-times"></i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button">
-                                            <i className="fas fa-share-square"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="avatar">
-                                <img src="/usuario.png" alt="img" />
-                            </div>
-                        </div>
+
                     </div>
                     <div className="panel-escritura">
-                        <form className="textarea">
+                        <form className="textarea" onSubmit={handleSubmit}>
                             <div className="opcines">
                                 <button type="button">
                                     <i className="fas fa-file"></i>
@@ -167,11 +157,12 @@ const Chat = () => {
                                     <input type="file" id="img" />
                                 </button>
                             </div>
-                            <textarea placeholder="Escribir mensaje"></textarea>
-                            <button type="button" className="enviar">
+                            <textarea placeholder="Escribir mensaje" onChange={e => setMessage(e.target.value)} value={message}></textarea>
+                            <button type="submit" className="enviar"  >
                                 <i className="fas fa-paper-plane"></i>
                             </button>
                         </form>
+
                     </div>
                 </div>
             </section>
