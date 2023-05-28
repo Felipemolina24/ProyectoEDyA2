@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import { createContext, useContext, useEffect } from "react";
-import { auth } from '../firebase/firebase'
-import axios from "axios";
 
-import {
-    
-    GoogleAuthProvider,
-    signInWithPopup,
-    FacebookAuthProvider,
-    signOut,
-    onAuthStateChanged,
-    sendPasswordResetEmail
-} from "firebase/auth";
+
+
+
 
 export const authContext = createContext();
 
@@ -31,9 +23,7 @@ export function AuthProvider({ children }) {
     const [data, setData] = useState([])
     const [car, setCar] = useState([])
 
-    useEffect(() => {
-        axios("data.json").then((res) => setData(res.data))
-    }, [])
+  
 
     const buyProducts = (producto) => {
         const productoRepetido = car.find((item) => item.id === producto.id)
@@ -51,57 +41,16 @@ export function AuthProvider({ children }) {
         localStorage.setItem("lastPath", path);
     };
 
-    useEffect(() => {
-        const unsuscribed = onAuthStateChanged(auth, (currentUser) => {
-            if (!currentUser) {
-                console.log("No hay ningun usuario logeado")
-                setUser("")
-            } else {
-                setUser(currentUser)
-                const lastPath = localStorage.getItem("lastPath");
-                if(lastPath){
-                    localStorage.removeItem("lastPath")
-                    window.location.href = lastPath;
-                }
-            }
-        })
-        return () => unsuscribed()
-    }, [])
-
-
-
-
-
-    
-
-    const loginWithGoogle = async () => {
-        const responseGoogle = new GoogleAuthProvider()
-        console.log(responseGoogle)
-        return await signInWithPopup(auth, responseGoogle)
-
-    }
-
-    const loginWithFacebook = async () => {
-        const responseFacebook = new FacebookAuthProvider()
-        return await signInWithPopup(auth, responseFacebook)
-    }
-
-
-    const logout = async () => {
-        const response = await signOut(auth)
-        console.log(response)
-    }
-
  
+
+
 
 
     return (
         <authContext.Provider
             value={{
                 
-                loginWithGoogle,
-                loginWithFacebook,
-                logout,
+                
                 user,
                 data,
                 car,
