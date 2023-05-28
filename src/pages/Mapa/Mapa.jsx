@@ -1,5 +1,4 @@
 import './Mapa.css'
-import 'leaflet/dist/leaflet.css';
 import Nabvar from '../../components/Nabvar'
 
 
