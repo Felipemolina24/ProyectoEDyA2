@@ -4,7 +4,6 @@ import './Tienda.css'
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { authContext } from "../../context/AuthContext"
-import CartTotal from "../../components/CartContent/CartTotal"
 import Nabvar from '../../components/Nabvar'
 
 const Tienda = () => {

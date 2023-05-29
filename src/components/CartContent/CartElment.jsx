@@ -19,7 +19,7 @@ const CartElment = () => {
     return car.map((producto) =>{
         return(
             <div className="cartContent" key={producto.id}>
-                <img src={producto.img}/>
+                <img src={producto.img} alt=""/>
                 <h3 className="name">{producto.nombre}</h3>
                 <CartItemCounter producto={producto} />
                 <h4 className="price">{producto.precio * producto.quanty}$</h4>

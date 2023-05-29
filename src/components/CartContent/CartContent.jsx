@@ -2,7 +2,6 @@ import CartElment from "./CartElment"
 import CartTotal from "./CartTotal"
 import { useContext } from "react"
 import { authContext } from "../../context/AuthContext"
-import { Tienda } from "../../pages/Tienda/Tienda"
 import { Link } from "react-router-dom"
 const CartContent = () => {
 

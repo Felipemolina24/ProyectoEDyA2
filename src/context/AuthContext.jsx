@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { createContext, useContext, useEffect } from "react";
-
-
-
-
+import axios from "axios";
 
 export const authContext = createContext();
 
@@ -23,7 +20,9 @@ export function AuthProvider({ children }) {
     const [data, setData] = useState([])
     const [car, setCar] = useState([])
 
-  
+    useEffect(() => {
+        axios("data.json").then((res) => setData(res.data))
+    }, [])
 
     const buyProducts = (producto) => {
         const productoRepetido = car.find((item) => item.id === producto.id)
@@ -41,7 +40,6 @@ export function AuthProvider({ children }) {
         localStorage.setItem("lastPath", path);
     };
 
- 
 
 
 
@@ -49,8 +47,9 @@ export function AuthProvider({ children }) {
     return (
         <authContext.Provider
             value={{
-                
-                
+
+
+
                 user,
                 data,
                 car,

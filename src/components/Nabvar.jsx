@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.css'
-import { useState, useEffect } from 'react';
-import decode from 'jwt-decode';
+import { useState } from 'react';
+
 
 function Nabvar() {
 

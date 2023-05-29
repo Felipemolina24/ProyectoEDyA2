@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Label from "../Login/components/Label/Label";
 import './Home.css'
-import { useAuth } from "../../context/AuthContext";
-import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Container} from 'react-bootstrap'
 import Nabvar from "../../components/Nabvar";
-import Banner from "../../components/Banner/Banner";
 import Posts from "../../components/Posts/Posts";
 import Form from '../../components/Form/Form'
 import { useDispatch } from "react-redux";

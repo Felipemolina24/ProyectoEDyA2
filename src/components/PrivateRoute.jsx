@@ -1,16 +1,25 @@
+import React from "react";
+import { Navigate, Route, useLocation } from "react-router-dom";
 
-import { useAuth } from "../context/AuthContext"
-import { Navigate, } from "react-router-dom"
+const PrivateRoute = ({ element: Element, ...rest }) => {
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const location = useLocation();
 
+  if (!user) {
+    return (
+      <Navigate
+        to="/"
+        state={{ from: location.pathname }}
+        replace
+      />
+    );
+  }
 
-const PrivateRoute = ({children}) =>{
-   const {user, loading} = useAuth()
+  return (
+    <React.Fragment>
+      <Route {...rest} element={<Element />} />
+    </React.Fragment>
+  );
+};
 
-   if(loading) return <h1>loading</h1>
-
-   if(!user) return <Navigate to='/'/>
-
-   return <>{children}</>
-}   
-
-export default PrivateRoute
+export default PrivateRoute;

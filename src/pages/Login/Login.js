@@ -6,13 +6,12 @@ import './Login.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useAuth } from "../../context/AuthContext";
 import {login} from '../../actions/auth'
 
 
 const Login = () => {
 
-    const auth = useAuth()
+   
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -99,7 +98,7 @@ const Login = () => {
                                         <button className="btn btn-outline-primary w-100 my-1" /*onClick={(e) => handleFacebook(e)}*/ >
                                             <div className="row align-items-center">
                                                 <div className="col-2">
-                                                    <img src="facebook.png" width="32" />
+                                                    <img src="facebook.png" alt="" width="32" />
                                                 </div>
 
                                                 <div className="col-10 text-center">
@@ -112,7 +111,7 @@ const Login = () => {
                                         <button className="btn btn-outline-danger w-100 my-1" /*onClick={(e) => handleGoogle(e)}*/ >
                                             <div className="row align-items-center">
                                                 <div className="col-2">
-                                                    <img src="google.png" width="32" />
+                                                    <img src="google.png" alt=""  width="32" />
                                                 </div>
 
                                                 <div className="col-10 text-center">
@@ -136,7 +135,7 @@ const Login = () => {
                             </form>
                         </div>
                         <div className="col-md-6">
-                            <img src="imagen.png" className="login-img" />
+                            <img src="imagen.png" alt=""  className="login-img" />
                         </div>
                     </div>
                 </div>
