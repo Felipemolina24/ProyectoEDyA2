@@ -4,23 +4,22 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes'
 import decode from 'jwt-decode'
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from "react-router-dom";
 
 const Perfil = () => {
 
   const navigate = useNavigate()
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
-  const location = useLocation();
+  
 
-  const logout = () => {
+  const logout = useCallback(() => {
     dispatch({ type: actionType.LOGOUT });
-
-    navigate("/")
-
+    navigate("/");
     setUser(null);
-  }
+  }, [dispatch, navigate]);
+
 
   useEffect(() => {
     const token = user?.token;
@@ -28,16 +27,18 @@ const Perfil = () => {
     if (token) {
       const decodedToken = decode(token);
 
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
     }
 
     setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location]);
+  }, [logout, user?.token]);
 
   return (
     <div className="sidebar">
       <div className="profile">
-        <img alt={user.result.email} src={user.result.imageUrl}  className='d-inline-block align-top' />
+        <img alt={user.result.email} src={user.result.imageUrl} className='d-inline-block align-top' />
         {user.result.email}
       </div>
       <br></br>

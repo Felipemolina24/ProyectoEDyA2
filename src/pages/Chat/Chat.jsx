@@ -10,7 +10,7 @@ const Chat = () => {
 
     const [message, setMessage] = useState("")
     const [messages, setMessages] = useState([])
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const user = JSON.parse(localStorage.getItem("profile"));
 
     const handleSubmit = (e) => {
         e.preventDefault()

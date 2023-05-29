@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
         localStorage.setItem("lastPath", path);
     };
 
-
+    console.log(setUser);
 
 
 
@@ -51,6 +51,7 @@ export function AuthProvider({ children }) {
 
 
                 user,
+                setUser,
                 data,
                 car,
                 setCar,
