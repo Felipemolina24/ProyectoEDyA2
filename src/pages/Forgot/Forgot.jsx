@@ -12,7 +12,7 @@ const Forgot = () =>{
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6"><br></br>
-                   <img src="candado.png" className="mx-auto d-block" /> 
+                   <img src="candado.png" alt="" className="mx-auto d-block" /> 
                    <form><br></br>
                    <div className="text-center">
                    <Titulo text="¿Tienes problemas para iniciar sesión?"/>

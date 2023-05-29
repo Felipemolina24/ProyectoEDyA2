@@ -5,8 +5,7 @@ import Login from './pages/Login/Login';
 import Registro from './pages/Registro/Registro';
 import Forgot from './pages/Forgot/Forgot';
 import Home from './pages/Home/Home';
-import {BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute';
+import { Route,  Routes} from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext';
 import Perfil from './pages/Perfil/Perfil';
 import Tienda from './pages/Tienda/Tienda';
