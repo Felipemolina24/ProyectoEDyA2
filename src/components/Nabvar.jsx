@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.css'
-import { useState } from 'react';
+
 
 
 function Nabvar() {
 
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const user = JSON.parse(localStorage.getItem("profile"));
     console.log(user);
 
    
