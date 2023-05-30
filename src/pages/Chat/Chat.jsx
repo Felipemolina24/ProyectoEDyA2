@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import moment from 'moment'
 
-const socket = io('http://localhost:4000')
+const socket = io('https://proyectoedya2.onrender.com')
 
 const Chat = () => {
 
